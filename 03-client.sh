@@ -8,16 +8,14 @@ set -euo pipefail
 
 DOMAINE="stanley.lan"
 REALM="STANLEY.LAN"
-IP_SERVEUR="192.168.56.10"
+IP_SERVEUR="192.168.56.101"
 SERVEUR="ipa1.${DOMAINE}"
+ADMIN_PASS="YourAdminPasswordHere"
 
 if [[ $EUID -ne 0 ]]; then
     echo "Ce script doit etre lance en root." >&2
     exit 1
 fi
-
-read -rsp "Mot de passe de l'utilisateur admin IPA : " ADMIN_PASS
-echo
 
 echo "=== [1/5] Pointage DNS vers le serveur IPA ==="
 if [[ -f /etc/redhat-release ]]; then

@@ -1,4 +1,18 @@
+systemctl stop ipa
+
+systemctl stop named
+
+systemctl stop dirsrv.target
+
+systemctl stop krb5kdc
+
+systemctl stop kadmin
+
+systemctl stop pki-tomcatd@pki-tomcat
+ipa-server-install --uninstall --unattended
+
 dnf remove -y ipa-server ipa-server-dns ipa-client bind-dyndb-ldap
+
 dnf autoremove -y
 rm -rf /etc/ipa
 

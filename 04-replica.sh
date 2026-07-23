@@ -6,6 +6,8 @@
 
 set -euo pipefail
 
+ADMIN_PASS="08o7Y3/w87ah/mZZukdw8w3N"
+
 if [[ $EUID -ne 0 ]]; then
     echo "Ce script doit etre lance en root." >&2
     exit 1
@@ -15,9 +17,6 @@ if [[ ! -f /etc/ipa/default.conf ]]; then
     echo "ERREUR : machine non enrolee. Lancer d'abord 03-client.sh." >&2
     exit 1
 fi
-
-read -rsp "Mot de passe de l'utilisateur admin IPA : " ADMIN_PASS
-echo
 
 echo "=== [1/4] Paquets serveur ==="
 dnf -y module enable idm:DL1 2>/dev/null || true
